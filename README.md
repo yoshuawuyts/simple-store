@@ -55,8 +55,12 @@ store.reset();
 
 ## Events
 #### change[newValue, oldValue]
-When the store is updated it emits a `change` event, providing
-`newValue, oldValue` as arguments.
+When the value inside the store is updated the store emits a `change` event.
+```js
+store.on('change', function(newValue, oldValue) {
+  console.log(newValue, oldValue);
+});
+```
 
 ## License
 [MIT](https://tldrlegal.com/license/mit-license) ©
