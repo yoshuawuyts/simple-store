@@ -19,5 +19,8 @@
     "istanbul": "^0.2.11",
     "mocha": "^1.20.1",
     "should": "^4.0.4"
+  },
+  "dependencies": {
+    "debug": "^1.0.4"
   }
 }
