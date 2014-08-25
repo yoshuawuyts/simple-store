@@ -26,7 +26,6 @@ var store = Store.prototype;
  */
 
 function Store(defaultValue) {
-  assert(emitters, 'Emitters should be an object');
   if (!(this instanceof Store)) return new Store(defaultValue);
   this._value = this._defaultValue = defaultValue;
 
