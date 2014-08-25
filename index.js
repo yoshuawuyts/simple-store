@@ -39,7 +39,7 @@ function Store(defaultValue) {
 Store.prototype.__proto__ = Emitter.prototype;
 
 /**
- * Get.
+ * Get the current value.
  *
  * @api public
  */
@@ -49,7 +49,7 @@ store.get = function() {
 }
 
 /**
- * Update.
+ * Update the current value.
  *
  * @param {Any} value
  * @api public
@@ -61,7 +61,7 @@ store.update = function(value) {
 }
 
 /**
- * Remove.
+ * Reset to the default value.
  *
  * @api public
  */
