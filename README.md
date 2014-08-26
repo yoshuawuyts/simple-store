@@ -27,11 +27,11 @@ user.get()
 ```
 
 ## API
-#### store(defaultValue)
+#### store(defaultValue, opts)
 Initialize the store with a default value.
 ```js
 var simpleStore = require('simple-store');
-var store = simpleStore('/');
+var store = simpleStore('/', {name: 'path'});
 ```
 
 #### .get()

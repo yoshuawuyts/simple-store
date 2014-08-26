@@ -22,12 +22,15 @@ var store = Store.prototype;
  * Create a new 'Store'.
  *
  * @param {Any} defaultValue
+ * @param {Object} opts
  * @api public
  */
 
-function Store(defaultValue) {
-  if (!(this instanceof Store)) return new Store(defaultValue);
+function Store(defaultValue, opts) {
+  if (!(this instanceof Store)) return new Store(defaultValue, opts);
   this._value = this._defaultValue = defaultValue;
+  this.opts = opts || {};
+  this.opts.name = this.opts.name || 'store';
 
   return this;
 };
@@ -56,6 +59,7 @@ store.get = function() {
  */
 
 store.update = function(value) {
+  debug('Updated ' + this.opts.name, value);
   this.emit('change', value, this._value);
   this._value = value;
 }
