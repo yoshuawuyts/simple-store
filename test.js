@@ -12,6 +12,11 @@ var store = require('./index');
  */
 
 describe('store()', function() {
+  it('should catch errors', function() {
+    store.bind(store, null, 123)
+      .should.throw('Opts should be an object');
+  });
+
   it('should initialize with a default value', function() {
     store.bind(store)
       .should.not.throw();
@@ -21,6 +26,14 @@ describe('store()', function() {
 
     store('foo')
       ._defaultValue.should.eql('foo');
+  });
+
+  it('should set a name', function() {
+    store('foo', {name: 'bar'})
+      ._opts.name.should.eql('bar');
+
+    store('foo')
+      ._opts.name.should.eql('store');
   });
 });
 

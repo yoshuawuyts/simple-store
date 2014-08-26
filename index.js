@@ -28,9 +28,13 @@ var store = Store.prototype;
 
 function Store(defaultValue, opts) {
   if (!(this instanceof Store)) return new Store(defaultValue, opts);
+
+  var optsError = 'Opts should be an object';
+  assert('object' == typeof opts || 'undefined' == typeof opts, optsError);
+
   this._value = this._defaultValue = defaultValue;
-  this.opts = opts || {};
-  this.opts.name = this.opts.name || 'store';
+  this._opts = opts || {};
+  this._opts.name = this._opts.name || 'store';
 
   return this;
 };
@@ -61,7 +65,7 @@ store.get = function() {
 store.update = function(value) {
   this._value = value;
   this.emit('change', value, this._value);
-  debug('Updated \'' + this.opts.name + '\'', value);
+  debug('Updated \'' + this._opts.name + '\'', value);
 }
 
 /**
@@ -73,5 +77,5 @@ store.update = function(value) {
 store.reset = function() {
   this._value = this._defaultValue;
   this.emit('change', this._defaultValue, this._value);
-  debug('Updated \'' + this.opts.name + '\'', this._value);
+  debug('Updated \'' + this._opts.name + '\'', this._value);
 }
