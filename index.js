@@ -59,9 +59,9 @@ store.get = function() {
  */
 
 store.update = function(value) {
-  debug('Updated ' + this.opts.name, value);
-  this.emit('change', value, this._value);
   this._value = value;
+  this.emit('change', value, this._value);
+  debug('Updated \'' + this.opts.name + '\'', value);
 }
 
 /**
@@ -71,6 +71,7 @@ store.update = function(value) {
  */
 
 store.reset = function() {
-  this.emit('change', this._defaultValue, this._value);
   this._value = this._defaultValue;
+  this.emit('change', this._defaultValue, this._value);
+  debug('Updated \'' + this.opts.name + '\'', this._value);
 }
