@@ -34,11 +34,18 @@ var simpleStore = require('simple-store');
 var store = simpleStore('/', {name: 'path'});
 ```
 
-#### .get()
-Get a value from the store.
+#### .get(namespace)
+Get a value from the store. Emits a 'get' event which can
+be namespaced to allow for specific listeners.
 ```js
 store.get();
 // => '/'
+
+store.on('get:namespace')
+store.get('namespace', function(val) {
+  console.log(val);
+  // => '/'
+});
 ```
 
 #### .update(value)
