@@ -43,6 +43,29 @@ describe('.get()', function() {
     x._value = 123;
     x.get().should.eql(123);
   });
+  it('should emit a \'get\' event', function(done) {
+    var x = store();
+    x._value = 123;
+
+    x.on('get', function(val) {
+      val.should.eql(123);
+      done();
+    });
+
+    x.get();
+  });
+  
+  it('should accept event namespaces', function(done) {
+    var x = store();
+    x._value = 123;
+
+    x.on('get:derp', function(val) {
+      val.should.eql(123);
+      done();
+    });
+
+    x.get('derp');
+  });
 });
 
 describe('.update()', function() {

@@ -46,14 +46,21 @@ function Store(defaultValue, opts) {
 Store.prototype.__proto__ = Emitter.prototype;
 
 /**
- * Get the current value.
+ * Getthe current value.
  *
+ * @param {String} namespace
+ * @return {Object[]}
  * @api public
  */
 
-store.get = function() {
+store.get = function(namespace) {
+  var id = namespace
+      ? 'get:' + namespace
+      : 'get'
+
+  this.emit(id, this._value);
   return this._value;
-}
+};
 
 /**
  * Update the current value.
