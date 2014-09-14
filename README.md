@@ -37,7 +37,7 @@ store.set('foo');
 ```
 
 #### .get(namespace)
-Get a value from the store. Emits a 'get' event which can
+Get a value from the store. Emits a `get` event which can
 be namespaced to allow for specific listeners.
 ```js
 store.get();
