@@ -13,25 +13,27 @@ $ npm i --save simple-store
 ```
 ## Overview
 ```js
-// Init store with a default value.
 var store = require('simple-store');
-var user = store({name: 'John', age: 26});
+var user = store('user');
 
-user.update({name: 'Tobi', age: 12});
+user.set({name: 'Tobi', age: 12});
+
 user.get()
 // => {name: 'Tobi'}
-
-user.reset()
-user.get()
-// => {name: 'John', age: 26}
 ```
 
 ## API
-#### store(defaultValue, opts)
-Initialize the store with a default value.
+#### store(name)
+Initialize the store with a given name.
 ```js
 var simpleStore = require('simple-store');
-var store = simpleStore('/', {name: 'path'});
+var store = simpleStore('myStore');
+```
+
+#### .set(value)
+Set the store to contain a value. Emits a `change` event.
+```js
+store.set('foo');
 ```
 
 #### .get(namespace)
@@ -39,29 +41,32 @@ Get a value from the store. Emits a 'get' event which can
 be namespaced to allow for specific listeners.
 ```js
 store.get();
-// => '/'
+// => 'foo'
 
-store.on('get:namespace')
-store.get('namespace', function(val) {
-  console.log(val);
-  // => '/'
-});
-```
-
-#### .update(value)
-Update the store with a value. Emits a `change` event.
-```js
-store.update('/404');
-```
-
-#### .reset()
-Reset the store to its default value. Emits a `change` event.
-```js
-store.reset();
+store.on('get:myNamespace', console.log);
+store.get('myNamespace');
+// emit => 'foo'
 ```
 
 ## Events
-#### change[newValue, oldValue]
+#### get[:namespace]
+Emits the current value in the store. Can optionally be namesapced to allow for
+specific listeners (and prevent conflicts between modules), which makes it as
+useful as callbacks to pass values around.
+```js
+store.on('get:bob', function() {
+  console.log('jolly ranchers');
+});
+
+store.on('get:toby', function() {
+  console.log('furry ferrets');
+});
+
+store.get('toby');
+// emit => 'furry ferrets';
+```
+
+#### change(newValue, oldValue)
 When the value inside the store is updated the store emits a `change` event.
 ```js
 store.on('change', function(newValue, oldValue) {

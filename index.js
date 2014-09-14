@@ -2,9 +2,9 @@
  * Module dependencies.
  */
 
-var debug = require('debug')('simple-store');
 var Emitter = require('events').EventEmitter;
 var assert = require('assert');
+var debug = require('debug');
 
 /**
  * Expose 'Aggregate'.
@@ -21,20 +21,17 @@ var store = Store.prototype;
 /**
  * Create a new 'Store'.
  *
- * @param {Any} defaultValue
- * @param {Object} opts
+ * @param {String} name
  * @api public
  */
 
-function Store(defaultValue, opts) {
-  if (!(this instanceof Store)) return new Store(defaultValue, opts);
+function Store(name) {
+  if (!(this instanceof Store)) return new Store(name);
 
-  var optsError = 'Opts should be an object';
-  assert('object' == typeof opts || 'undefined' == typeof opts, optsError);
+  assert('string' == typeof name, 'Name should be a string');
 
-  this._value = this._defaultValue = defaultValue;
-  this._opts = opts || {};
-  this._opts.name = this._opts.name || 'store';
+  this.debug = debug('simple-store:' + name);
+  this._name = name;
 
   return this;
 };
@@ -55,10 +52,11 @@ Store.prototype.__proto__ = Emitter.prototype;
 
 store.get = function(namespace) {
   var id = namespace
-      ? 'get:' + namespace
-      : 'get'
+    ? 'get:' + namespace
+    : 'get'
 
   this.emit(id, this._value);
+  this.debug('Get ', this._value);
   return this._value;
 };
 
@@ -69,20 +67,8 @@ store.get = function(namespace) {
  * @api public
  */
 
-store.update = function(value) {
+store.set = function(value) {
   this._value = value;
   this.emit('change', value, this._value);
-  debug('Updated \'' + this._opts.name + '\'', value);
-}
-
-/**
- * Reset to the default value.
- *
- * @api public
- */
-
-store.reset = function() {
-  this._value = this._defaultValue;
-  this.emit('change', this._defaultValue, this._value);
-  debug('Updated \'' + this._opts.name + '\'', this._value);
+  this.debug('Set ', value, this._value);
 }

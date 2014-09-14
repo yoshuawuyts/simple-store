@@ -14,37 +14,44 @@ var store = require('./index');
 describe('store()', function() {
   it('should catch errors', function() {
     store.bind(store, null, 123)
-      .should.throw('Opts should be an object');
-  });
-
-  it('should initialize with a default value', function() {
-    store.bind(store)
-      .should.not.throw();
-
-    store('foo')
-      ._value.should.eql('foo');
-
-    store('foo')
-      ._defaultValue.should.eql('foo');
+      .should.throw('Name should be a string');
   });
 
   it('should set a name', function() {
-    store('foo', {name: 'bar'})
-      ._opts.name.should.eql('bar');
+    store('foo')._name.should.eql('foo');
+    store('bar')._name.should.eql('bar');
+  });
 
-    store('foo')
-      ._opts.name.should.eql('store');
+  it('should emit events', function(done) {
+    var x = store('x');
+    x._value = 'foo';
+    x.on('get', function(val) {
+      val.should.eql('foo');
+      done();
+    });
+    x.get();
+  });
+
+  it('should emit namespaced events', function(done) {
+    var x = store('x');
+    x._value = 'foo';
+    x.on('get:bar', function(val) {
+      val.should.eql('foo');
+      done();
+    });
+    x.get('bar');
   });
 });
 
 describe('.get()', function() {
   it('should return the current value', function() {
-    var x = store();
+    var x = store('x');
     x._value = 123;
     x.get().should.eql(123);
   });
+
   it('should emit a \'get\' event', function(done) {
-    var x = store();
+    var x = store('x');
     x._value = 123;
 
     x.on('get', function(val) {
@@ -54,9 +61,9 @@ describe('.get()', function() {
 
     x.get();
   });
-  
+
   it('should accept event namespaces', function(done) {
-    var x = store();
+    var x = store('x');
     x._value = 123;
 
     x.on('get:derp', function(val) {
@@ -65,26 +72,5 @@ describe('.get()', function() {
     });
 
     x.get('derp');
-  });
-});
-
-describe('.update()', function() {
-  it('should update the value', function() {
-    var x = store();
-    x._value = 123;
-    x._value.should.eql(123);
-    x.update('hello');
-    x._value.should.eql('hello');
-  });
-});
-
-describe('.reset()', function() {
-  it('should reset the current value to the defaultValue', function() {
-    var x = store();
-    x._value = 123;
-    x._defaultValue = 'howdy';
-    x._value.should.eql(123);
-    x.reset();
-    x._value.should.eql('howdy');
   });
 });
