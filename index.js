@@ -68,7 +68,7 @@ store.get = function(namespace) {
  */
 
 store.set = function(value) {
+  this.debug('Set ', value, this._value);
   this._value = value;
   this.emit('change', value, this._value);
-  this.debug('Set ', value, this._value);
 }
