@@ -30,7 +30,7 @@ function Store(name) {
 
   assert('string' == typeof name, 'Name should be a string');
 
-  this.debug = debug('simple-store:' + name);
+  this.debug = debug(name);
   this._name = name;
 
   return this;
