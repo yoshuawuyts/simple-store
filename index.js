@@ -53,7 +53,7 @@ Store.prototype.__proto__ = Emitter.prototype;
 store.get = function(namespace) {
   var id = namespace
     ? 'get:' + namespace
-    : 'get'
+    : 'get';
 
   this.emit(id, this._value);
   this.debug('Get ', this._value);
