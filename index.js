@@ -56,7 +56,7 @@ store.get = function(namespace) {
     : 'get';
 
   this.emit(id, this._value);
-  this.debug('Get ', this._value);
+  this.debug('get ', this._value);
   return this._value;
 };
 
@@ -70,6 +70,6 @@ store.get = function(namespace) {
 store.set = function(value) {
   var oldValue = this._value;
   this._value = value;
-  this.debug('Set ', this._value, oldValue);
+  this.debug('set ', this._value, oldValue);
   this.emit('change', this._value, oldValue);
 };
