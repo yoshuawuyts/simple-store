@@ -3,9 +3,9 @@
 [![build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 
-Simple event emitting data store. Acts as the little brother to [dad][dad].
-It lends itself well to store single-instance variables such as the current url
-being viewed or configuration of the page.
+Simple event emitting data store. It lends itself well to store
+single-instance variables such as the current url being viewed or configuration
+of the page.
 
 ## Installation
 ```bash
@@ -55,15 +55,15 @@ specific listeners (and prevent conflicts between modules), which makes it as
 useful as callbacks to pass values around. If you want to suppress `debug`
 messages you can pass in a `silent` namespace.
 ```js
-store.on('get:bob', function() {
+store.on('get:jane', function() {
   console.log('jolly ranchers');
 });
 
-store.on('get:toby', function() {
+store.on('get:tobi', function() {
   console.log('furry ferrets');
 });
 
-store.get('toby');
+store.get('tobi');
 // emit => 'furry ferrets';
 ```
 
