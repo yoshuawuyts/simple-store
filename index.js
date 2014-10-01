@@ -43,7 +43,7 @@ function Store(name) {
 Store.prototype.__proto__ = Emitter.prototype;
 
 /**
- * Getthe current value.
+ * Get the current value.
  *
  * @param {String} namespace
  * @return {Object[]}
@@ -51,12 +51,14 @@ Store.prototype.__proto__ = Emitter.prototype;
  */
 
 store.get = function(namespace) {
-  var id = namespace
-    ? 'get:' + namespace
-    : 'get';
+  var id = !namespace
+    ? 'get'
+    : 'silent' == namespace
+    ? 'get'
+    : 'get:' + namespace;
 
   this.emit(id, this._value);
-  this.debug('get ', this._value);
+  if ('silent' != namespace) this.debug('get ', this._value);
   return this._value;
 };
 

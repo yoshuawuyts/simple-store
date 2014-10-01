@@ -50,9 +50,10 @@ store.get('myNamespace');
 
 ## Events
 #### get[:namespace]
-Emits the current value in the store. Can optionally be namesapced to allow for
+Emits the current value in the store. Can optionally be namespaced to allow for
 specific listeners (and prevent conflicts between modules), which makes it as
-useful as callbacks to pass values around.
+useful as callbacks to pass values around. If you want to suppress `debug`
+messages you can pass in a `silent` namespace.
 ```js
 store.on('get:bob', function() {
   console.log('jolly ranchers');

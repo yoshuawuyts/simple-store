@@ -62,7 +62,7 @@ describe('.get()', function() {
     x.get();
   });
 
-  it('should accept event namespaces', function(done) {
+  it('should accept getter namespaces', function(done) {
     var x = store('x');
     x._value = 123;
 
@@ -72,5 +72,17 @@ describe('.get()', function() {
     });
 
     x.get('derp');
+  });
+
+  it('should accept a \'silent\' namespace', function(done) {
+    var x = store('x');
+    x._value = 123;
+
+    x.on('get', function(val) {
+      val.should.eql(123);
+      done();
+    });
+
+    x.get('silent');
   });
 });
