@@ -22,6 +22,12 @@ user.get()
 // => {name: 'Tobi'}
 ```
 
+## Debug
+To enable debugging set in the browser console:
+```
+❯ localStorage.debug = '*';
+```
+
 ## API
 #### store(name)
 Initialize the store with a given name.
