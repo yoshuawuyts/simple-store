@@ -2,7 +2,6 @@
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
-[![Dependency Status][david-image]][david-url]
 [![Downloads][downloads-image]][downloads-url]
 
 Simple event emitting data store. It lends itself well to store
@@ -93,8 +92,6 @@ store.on('change', function(newValue, oldValue) {
 [travis-url]: https://travis-ci.org/yoshuawuyts/simple-store
 [coveralls-image]: https://img.shields.io/coveralls/yoshuawuyts/simple-store.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/r/yoshuawuyts/simple-store?branch=master
-[david-image]: http://img.shields.io/david/yoshuawuyts/simple-store.svg?style=flat-square
-[david-url]: https://david-dm.org/yoshuawuyts/simple-store
 [downloads-image]: http://img.shields.io/npm/dm/simple-store.svg?style=flat-square
 [downloads-url]: https://npmjs.org/package/simple-store
 
