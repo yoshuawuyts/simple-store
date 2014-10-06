@@ -10,7 +10,7 @@ of the page.
 
 ## Installation
 ```sh
-npm install --save simple-store
+npm install simple-store
 ```
 ## Overview
 ```js
