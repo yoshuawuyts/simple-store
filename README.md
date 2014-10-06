@@ -9,8 +9,8 @@ single-instance variables such as the current url being viewed or configuration
 of the page.
 
 ## Installation
-```bash
-$ npm i --save simple-store
+```sh
+npm install --save simple-store
 ```
 ## Overview
 ```js
@@ -83,8 +83,7 @@ store.on('change', function(newValue, oldValue) {
 ```
 
 ## License
-[MIT](https://tldrlegal.com/license/mit-license) ©
-[Yoshua Wuyts](yoshuawuyts.com)
+[MIT](https://tldrlegal.com/license/mit-license)
 
 [npm-image]: https://img.shields.io/npm/v/simple-store.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/simple-store
@@ -94,6 +93,3 @@ store.on('change', function(newValue, oldValue) {
 [coveralls-url]: https://coveralls.io/r/yoshuawuyts/simple-store?branch=master
 [downloads-image]: http://img.shields.io/npm/dm/simple-store.svg?style=flat-square
 [downloads-url]: https://npmjs.org/package/simple-store
-
-
-[dad]: http://github.com/yoshuawuyts/dad
