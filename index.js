@@ -1,77 +1,41 @@
-/**
- * Module dependencies.
- */
+var Emitter = require('events').EventEmitter
+var debug = require('debug')
 
-var Emitter = require('events').EventEmitter;
-var assert = require('assert');
-var debug = require('debug');
+module.exports = store
 
-/**
- * Expose 'Aggregate'.
- */
+// create a store
+// str -> obj
+function store (name) {
+  const log = debug(name ? 'store:' + name : 'store')
+  const emitter = new Emitter()
+  var value = null
 
-exports = module.exports = Store;
+  set.on = on
+  set.set = set
+  set.get = get
 
-/**
- * 'Aggregate' prototype.
- */
+  return set
 
-var store = Store.prototype;
+  // update the current value
+  // emits: 'data' (new, old)
+  // any -> null
+  function set (nw) {
+    if (!arguments.length) return get()
+    const old = value
+    value = nw
+    log('set ', nw, old)
+    emitter.emit('data', nw, old)
+  }
 
-/**
- * Create a new 'Store'.
- *
- * @param {String} name
- * @api public
- */
+  // get the current value
+  // null -> any
+  function get () {
+    return value
+  }
 
-function Store(name) {
-  if (!(this instanceof Store)) return new Store(name);
-
-  assert('string' == typeof name, 'Name should be a string');
-
-  this.debug = debug('store:' + name);
-  this._name = name;
-
-  return this;
-};
-
-/**
- * Inherit from `Emitter.prototype`.
- */
-
-Store.prototype.__proto__ = Emitter.prototype;
-
-/**
- * Get the current value.
- *
- * @param {String} namespace
- * @return {Object[]}
- * @api public
- */
-
-store.get = function(namespace) {
-  var id = !namespace
-    ? 'get'
-    : 'silent' == namespace
-    ? 'get'
-    : 'get:' + namespace;
-
-  this.emit(id, this._value);
-  if ('silent' != namespace) this.debug('get ', this._value);
-  return this._value;
-};
-
-/**
- * Update the current value.
- *
- * @param {Any} value
- * @api public
- */
-
-store.set = function(value) {
-  var oldValue = this._value;
-  this._value = value;
-  this.debug('set ', this._value, oldValue);
-  this.emit('change', this._value, oldValue);
-};
+  // set a change listener
+  // str, fn -> null
+  function on (event, cb) {
+    return emitter.on(event, cb)
+  }
+}
