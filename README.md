@@ -32,8 +32,7 @@ Initialize a store with a name.
 Set the store to contain a value. Emits a `data` event. Alias: `.set(value)`.
 
 ### s()
-Get a value from the store. Emits a `get` event which can
-be namespaced to allow for specific listeners. Alias: `.get()`.
+Get a value from the store. Alias: `.get()`.
 
 ## Events
 ```txt
