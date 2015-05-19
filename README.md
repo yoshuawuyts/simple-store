@@ -3,6 +3,7 @@
 [![build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 [![Downloads][downloads-image]][downloads-url]
+[![js-standard-style][standard-image]][standard-url]
 
 Event emitting data store.
 
@@ -50,3 +51,5 @@ data - emitted whenever the value in the store is set
 [coveralls-url]: https://coveralls.io/r/yoshuawuyts/simple-store?branch=master
 [downloads-image]: http://img.shields.io/npm/dm/simple-store.svg?style=flat-square
 [downloads-url]: https://npmjs.org/package/simple-store
+[standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
+[standard-url]: https://github.com/feross/standard
