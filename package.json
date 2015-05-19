@@ -1,6 +1,6 @@
 {
   "name": "simple-store",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Event emitting data store",
   "main": "index.js",
   "scripts": {
