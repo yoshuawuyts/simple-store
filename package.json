@@ -1,18 +1,20 @@
 {
   "name": "simple-store",
   "version": "2.4.1",
-  "description": "",
+  "description": "Event emitting data store",
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test node test",
     "test-cov": "standard && NODE_ENV=test istanbul cover test.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yoshuawuyts/simple-store"
-  },
-  "keywords": [],
-  "author": "Yoshua Wuyts <i@yoshuawuyts.com>",
+  "repository": "yoshuawuyts/wayfarer",
+  "keywords": [
+    "observable",
+    "data store",
+    "application state",
+    "persist",
+    "event"
+  ],
   "license": "MIT",
   "devDependencies": {
     "istanbul": "^0.3.14",

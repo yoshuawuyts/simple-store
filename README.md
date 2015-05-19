@@ -24,7 +24,7 @@ user()
 ```
 
 ## API
-#### s = store(name)
+### s = store(name)
 Initialize a store with a name.
 
 ### s(value)
