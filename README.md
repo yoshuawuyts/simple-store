@@ -44,7 +44,7 @@ data - emitted whenever the value in the store is set
 
 [npm-image]: https://img.shields.io/npm/v/simple-store.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/simple-store
-[travis-image]: https://img.shields.io/travis/yoshuawuyts/simple-store.svg?style=flat-square
+[travis-image]: https://img.shields.io/travis/yoshuawuyts/simple-store/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/yoshuawuyts/simple-store
 [coveralls-image]: https://img.shields.io/coveralls/yoshuawuyts/simple-store.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/r/yoshuawuyts/simple-store?branch=master
