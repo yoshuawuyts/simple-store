@@ -7,7 +7,7 @@
     "test": "NODE_ENV=test node test",
     "test-cov": "standard && NODE_ENV=test istanbul cover test.js"
   },
-  "repository": "yoshuawuyts/wayfarer",
+  "repository": "yoshuawuyts/simple-store",
   "keywords": [
     "observable",
     "data store",
